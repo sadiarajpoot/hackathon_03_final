@@ -225,37 +225,39 @@ const ProductPage = ({ params }: ProductPageProps) => {
 
       {/* Cart Details (Modal) */}
       {showCart && (
-        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 z-50">
-          <div className="w-1/2 mx-auto mt-20 bg-white p-4 rounded-lg shadow-lg">
-            <h3 className="text-xl font-semibold text-gray-800">Your Cart</h3>
-            <ul className="mt-4 space-y-4">
-              {cart.map((item, index) => {
-                const productImage = products.find((product) => product.id === item.id)?.image;
-                return (
-                  <li key={index} className="flex items-center justify-between">
-                    <div className="flex items-center space-x-4">
-                      {/* Product Image */}
-                      <Image
-                        src={productImage || "/default-image.jpg"} 
-                        alt={item.name}
-                        width={50}
-                        height={50}
-                        className="w-12 h-12 object-cover rounded"
-                      />
-                      {/* Product Name and Quantity */}
-                      <span>{item.name} - {item.price} x {item.quantity}</span>
-                    </div>
-                    {/* Remove Button */}
-                    <button
-                      onClick={() => removeFromCart(item.id)}
-                      className="text-red-600 Poppins"
-                    >
-                      Remove
-                    </button>
-                  </li>
-                );
-              })}
-            </ul>
+  <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 z-50">
+    <div className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 mx-auto mt-20 bg-white p-4 rounded-lg shadow-lg">
+      <h3 className="text-xl font-semibold text-gray-800">Your Cart</h3>
+      <ul className="mt-4 space-y-4">
+        {cart.map((item, index) => {
+          const productImage = products.find((product) => product.id === item.id)?.image;
+          return (
+            <li key={index} className="flex items-center justify-between">
+              <div className="flex items-center space-x-4">
+                {/* Product Image */}
+                <Image
+                  src={productImage || "/default-image.jpg"}
+                  alt={item.name}
+                  width={50}
+                  height={50}
+                  className="w-12 h-12 object-cover rounded"
+                />
+                {/* Product Name and Quantity */}
+                <span>{item.name} - {item.price} x {item.quantity}</span>
+              </div>
+              {/* Remove Button */}
+              <button
+                onClick={() => removeFromCart(item.id)}
+                className="text-red-600 Poppins"
+              >
+                Remove
+              </button>
+            </li>
+          );
+        })}
+      </ul>
+
+
             <div className="mt-4 flex justify-between">
               <span>Total: ${validTotalPrice.toFixed(2)}</span>
               <button

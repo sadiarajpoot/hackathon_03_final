@@ -47,66 +47,61 @@ const Shop = () => {
           </div>
         </div>
       </div>
+      <div className="w-full h-auto md:py-10 px-8">
+  <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 md:mt-[570px] mt-[800px] ">
+    {products.map((product) => (
+      <Link
+        key={product.id}
+        href={`/shop/${product.id}`}
+        className="relative w-full sm:w-[90%] mx-auto hover:scale-105 bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out"
+      >
+        <div className="relative w-full p-4">
+          {/* Product Image */}
+          <div className="relative w-full h-64 overflow-hidden rounded-lg">
+            <Image
+              src={product.image}
+              alt={product.name}
+              width={500}
+              height={500}
+              className="object-cover w-full h-full transform transition duration-500 hover:scale-105"
+            />
+          </div>
 
-      <div className="w-full h-auto md:py-10">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 m-24 md:mt-[570px] mt-[800px] ">
-          {products.map((product) => (
-            <Link key={product.id} href={`/shop/${product.id}`} className="relative w-full bg-white rounded-lg shadow-md hover:shadow-lg transition duration-300 ease-in-out">
-              <div className="relative w-full p-4">
-                {/* Product Image */}
-                <div className="relative w-full h-64 overflow-hidden rounded-lg">
-                  <Image
-                    src={product.image}
-                    alt={product.name}
-                    width={500}
-                    height={500}
-                    className="object-cover w-full h-full transform transition duration-500 hover:scale-105"
-                  />
-                </div>
+          {/* Product Details */}
+          <div className="flex flex-col items-start justify-between mt-4 space-y-3">
+            {/* Product Name */}
+            <h3 className="text-lg font-semibold text-gray-800 Poppins">
+              {product.name}
+            </h3>
 
-                {/* Product Details */}
-                <div className="flex flex-col items-start justify-between mt-4 space-y-3">
-                  {/* Product Name */}
-                  <h3 className="text-lg font-semibold text-gray-800 Poppins">
-                    {product.name}
-                  </h3>
+            {/* Product Rating */}
+            <div className="flex items-center gap-1">
+              {Array.from({ length: 5 }, (_, index) => (
+                <span key={index} className="text-yellow-500">
+                  ★
+                </span>
+              ))}
+            </div>
 
-                  {/* Product Rating */}
-                  <div className="flex items-center gap-1">
-                    {Array.from({ length: 5 }, (_, index) => (
-                      <span
-                        key={index}
-                        className="text-yellow-500"
-                      >
-                        ★
-                      </span>
-                    ))}
-                  </div>
-
-                  {/* Price & Original Price - Positioned on the Same Line */}
-                  <div className="flex w-full items-center mt-2">
-                    <h3 className="text-xl font-semibold text-gray-800">
-                      {product.price}
-                      <p className="text-sm text-gray-500 line-through">
-                        {product.originalprice}
-                      </p>
-                    </h3>
-
-                  </div>
-
-                </div>
-              </div>
-            </Link>
-          ))}
-
-
-
-
+            {/* Price & Original Price - Positioned on the Same Line */}
+            <div className="flex w-full items-center mt-2">
+              <h3 className="text-xl font-semibold text-gray-800">
+                {product.price}
+                <p className="text-sm text-gray-500 line-through">
+                  {product.originalprice}
+                </p>
+              </h3>
+            </div>
+          </div>
         </div>
-      </div>
+      </Link>
+    ))}
+  </div>
+</div>
+
 
       {/* Group 72 */}
-      <div className="w-full sm:w-[392px] h-[60px] flex absolute md:left-[580px] left-[35px] md:space-x-4 space-x-2 p-2 sm:justify-start mt-[-80px]">
+      <div className="w-full sm:w-[392px] h-[60px] flex absolute md:left-[580px] left-[35px] md:space-x-4 space-x-2 p-2 sm:justify-start mt-[27px]">
         <div className="w-[60px] h-[60px] bg-[#FBEBB5] rounded-[10px] flex justify-center items-center">
           <h3 className="text-[20px] text-black">1</h3>
         </div>
@@ -123,7 +118,7 @@ const Shop = () => {
 
 
 
-      <div className="bg-[#FAF4F4] w-full md:h-[300px] h-auto p-16 md:mt-[100px] mt-[140px]">
+      <div className="bg-[#FAF4F4] w-full md:h-[300px] h-auto p-16 md:mt-[120px] mt-[140px]">
         <div className="flex flex-col md:flex-row justify-between items-center space-y-6 md:space-y-0 md:space-x-6">
 
 

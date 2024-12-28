@@ -69,49 +69,45 @@ const HomePage = () => {
 
         {/* Product Grid */}
         <div className="flex flex-wrap justify-center gap-8 px-4">
-          {/* Product Card */}
-          {HomePageProducts.map((product) => (
-            <div
-              key={product.id}
-              className="w-[230px] h-auto flex flex-col items-center p-2 border border-gray-300 rounded-lg shadow-md"
-            >
-              <img src={product.image} alt={product.name} className="mb-2 w-full h-auto" />
-              <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-1">
-                {product.name}
-              </h3>
-              <div className="flex items-center justify-center mb-1">
-                <span className="Poppins text-[14px] text-gray-500 line-through mr-1">
-                  Rs. {product.originalPrice.toLocaleString()}
-                </span>
-                <span className="Poppins text-[18px] text-black font-medium">
-                  Rs. {product.price.toLocaleString()}
-                </span>
-              </div>
-              <div className="flex items-center justify-center mb-2">
-                <span className="text-yellow-500">
-                  {'★'.repeat(product.rating)} 
-                </span>
-                <span className="ml-2 text-gray-500">{product.rating} / 5</span>
-              </div>
-              <div className="flex gap-1 mb-2">
-                <button className="bg-slate-500 text-white px-4 py-1 rounded text-[14px] hover:bg-slate-600 transition hover:scale-105">
-                  Add to Cart
-                </button>
-                <button className="bg-green-500 text-white px-4 py-1 rounded text-[14px] hover:bg-green-600 transition hover:scale-105">
-                  Buy Now
-                </button>
-              </div>
-              <Link href={`/product/${product.id}`}>
-  <h3 className="bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-2 rounded-md text-xs font-semibold uppercase shadow-md transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:from-teal-500 hover:to-blue-500 mt-4 text-center">
-    View Details
-  </h3>
-</Link>
+  {/* Product Card */}
+  {HomePageProducts.map((product) => (
+    <div
+      key={product.id}
+      className="w-full sm:w-[90%] md:w-[230px] mx-4 h-auto flex flex-col items-center p-2 border border-gray-300 rounded-lg shadow-md"
+    >
+      <img src={product.image} alt={product.name} className="mb-2 w-full h-auto" />
+      <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-1">
+        {product.name}
+      </h3>
+      <div className="flex items-center justify-center mb-1">
+        <span className="Poppins text-[14px] text-gray-500 line-through mr-1">
+          Rs. {product.originalPrice.toLocaleString()}
+        </span>
+        <span className="Poppins text-[18px] text-black font-medium">
+          Rs. {product.price.toLocaleString()}
+        </span>
+      </div>
+      <div className="flex items-center justify-center mb-2">
+        <span className="text-yellow-500">{'★'.repeat(product.rating)}</span>
+        <span className="ml-2 text-gray-500">{product.rating} / 5</span>
+      </div>
+      <div className="flex gap-1 mb-2">
+        <button className="bg-slate-500 text-white px-4 py-1 rounded text-[14px] hover:bg-slate-600 transition hover:scale-105">
+          Add to Cart
+        </button>
+        <button className="bg-green-500 text-white px-4 py-1 rounded text-[14px] hover:bg-green-600 transition hover:scale-105">
+          Buy Now
+        </button>
+      </div>
+      <Link href={`/product/${product.id}`}>
+        <h3 className="bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-2 rounded-md text-xs font-semibold uppercase shadow-md transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:from-teal-500 hover:to-blue-500 mt-4 text-center">
+          View Details
+        </h3>
+      </Link>
+    </div>
+  ))}
+</div>
 
-
-            </div>
-          ))}
-
-        </div>
 
         <h3 className=" Poppins font-medium text-[16px] mb-2 mt-12 text-center sm:text-[20px] leading-[30px] text-black">
           View More
