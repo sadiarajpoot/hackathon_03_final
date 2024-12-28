@@ -2,10 +2,6 @@
 import Image from 'next/image';
 import Group8 from "../../public/Images/Group 8.png"
 import Group9 from "../../public/Images/Group 9.png"
-import MaskGroup11 from "../../public/Images/Mask group11.png"
-import MaskGroup12 from "../../public/Images/maskgroup12.png"
-import MaskGroup16 from "../../public/Images/Mask group 16.png"
-import MaskGroup17 from "../../public/Images/Mask group 17.png"
 import Asgaard from "../../public/Images/Asgaard sofa 1.png"
 import group48 from "../../public/Images/group 48.png"
 import rectangle1 from "../../public/Images/Rectangle 13@2x.png"
@@ -15,6 +11,7 @@ import Group35 from "../../public/Images/Group 35.png"
 import Group43 from "../../public/Images/Group 43.png"
 import Link from 'next/link'
 import HomeHeader from './HomeHeader';
+import { HomePageProducts} from '@/data/data';
 import HeroImage from "../../public/Images/Rocket single seater 1.png"
 
 const HomePage = () => {
@@ -73,44 +70,50 @@ const HomePage = () => {
         {/* Product Grid */}
         <div className="flex flex-wrap justify-center gap-8 px-4">
           {/* Product Card */}
-          <div className="w-[287px] h-auto flex flex-col items-center p-4">
-            <Image src={MaskGroup11} alt="MaskGroup11" className="mb-4" />
-            <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-2">
-              Trenton modular sofa_3
-            </h3>
-            <h3 className="Poppins font-medium text-[18px] text-center text-black">
-              Rs. 25,000.00
-            </h3>
-          </div>
-          <div className="w-[287px] h-auto flex flex-col items-center p-4">
-            <Image src={MaskGroup12} alt="MaskGroup12" className="mb-4" />
-            <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-2">
-              Granite dining table with dining chair
-            </h3>
-            <h3 className="Poppins font-medium text-[18px] text-center text-black">
-              Rs. 25,000.00
-            </h3>
-          </div>
-          <div className="w-[287px] h-auto flex flex-col items-center p-4">
-            <Image src={MaskGroup16} alt="MaskGroup16" className="mb-4" />
-            <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-2">
-              Outdoor bar table and stool
-            </h3>
-            <h3 className="Poppins font-medium text-[18px] text-center text-black">
-              Rs. 25,000.00
-            </h3>
-          </div>
-          <div className="w-[287px] h-auto flex flex-col items-center p-4">
-            <Image src={MaskGroup17} alt="MaskGroup17" className="mb-4" />
-            <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-2">
-              Plain console with teak mirror
-            </h3>
-            <h3 className="Poppins font-medium text-[18px] text-center text-black">
-              Rs. 25,000.00
-            </h3>
-          </div>
+          {HomePageProducts.map((product) => (
+            <div
+              key={product.id}
+              className="w-[230px] h-auto flex flex-col items-center p-2 border border-gray-300 rounded-lg shadow-md"
+            >
+              <img src={product.image} alt={product.name} className="mb-2 w-full h-auto" />
+              <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-1">
+                {product.name}
+              </h3>
+              <div className="flex items-center justify-center mb-1">
+                <span className="Poppins text-[14px] text-gray-500 line-through mr-1">
+                  Rs. {product.originalPrice.toLocaleString()}
+                </span>
+                <span className="Poppins text-[18px] text-black font-medium">
+                  Rs. {product.price.toLocaleString()}
+                </span>
+              </div>
+              <div className="flex items-center justify-center mb-2">
+                <span className="text-yellow-500">
+                  {'★'.repeat(product.rating)} 
+                </span>
+                <span className="ml-2 text-gray-500">{product.rating} / 5</span>
+              </div>
+              <div className="flex gap-1 mb-2">
+                <button className="bg-slate-500 text-white px-4 py-1 rounded text-[14px] hover:bg-slate-600 transition hover:scale-105">
+                  Add to Cart
+                </button>
+                <button className="bg-green-500 text-white px-4 py-1 rounded text-[14px] hover:bg-green-600 transition hover:scale-105">
+                  Buy Now
+                </button>
+              </div>
+              <Link href={`/product/${product.id}`}>
+  <h3 className="bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-2 rounded-md text-xs font-semibold uppercase shadow-md transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:from-teal-500 hover:to-blue-500 mt-4 text-center">
+    View Details
+  </h3>
+</Link>
+
+
+            </div>
+          ))}
+
         </div>
-        <h3 className=" Poppins font-medium text-[16px] mb-8 text-center sm:text-[20px] leading-[30px] text-black">
+
+        <h3 className=" Poppins font-medium text-[16px] mb-2 mt-12 text-center sm:text-[20px] leading-[30px] text-black">
           View More
         </h3>
         <hr className="w-[80px] sm:w-[115px] h-0 mx-auto mb-9  border border-black " />

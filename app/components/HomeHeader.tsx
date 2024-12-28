@@ -74,7 +74,7 @@ const HomeHeader = () => {
       {/* Carts Section */}
       <div className="flex flex-row space-x-5 mt-6">
         <Link href="/cart">
-          <div className="w-[28px] h-[28px]">
+          <div className="w-[28px] h-[28px] hidden">
             <BsCart3 size={30} />
           </div>
         </Link>
@@ -92,7 +92,7 @@ const HomeHeader = () => {
       </div>
 
       {/* Navigation Links */}
-      <ul className="flex flex-col space-y-10 mt-20 w-full font-medium">
+      <ul className="flex flex-col space-y-10 mt-20 w-full font-bold ">
         <Link href="/">
           <li className="cursor-pointer">Home</li>
         </Link>
