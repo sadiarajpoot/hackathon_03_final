@@ -75,6 +75,8 @@ const HomePage = () => {
       key={product.id}
       className="w-full sm:w-[90%] md:w-[230px] mx-4 h-auto flex flex-col items-center p-2 border border-gray-300 rounded-lg shadow-md"
     >
+      
+      <Link href={`/product/${product.id}`}>
       <img src={product.image} alt={product.name} className="mb-2 w-full h-auto" />
       <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-1">
         {product.name}
@@ -99,10 +101,6 @@ const HomePage = () => {
           Buy Now
         </button>
       </div>
-      <Link href={`/product/${product.id}`}>
-        <h3 className="bg-gradient-to-r from-blue-500 to-teal-500 text-white px-6 py-2 rounded-md text-xs font-semibold uppercase shadow-md transform transition-transform duration-200 hover:scale-105 hover:shadow-lg hover:from-teal-500 hover:to-blue-500 mt-4 text-center">
-          View Details
-        </h3>
       </Link>
     </div>
   ))}
