@@ -1,7 +1,12 @@
 "use client"
+
+import "react-toastify/dist/ReactToastify.css";
+
+import ProductCustomization from '@/app/components/Customization';
 import { HomePageProducts } from '@/data/data';
 import { useState, useEffect } from 'react';
 import { BsCart3 } from 'react-icons/bs';
+
 
 type Product = {
   id: number;
@@ -131,8 +136,8 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
             {renderStars(product.rating)} {/* Show rating stars */}
           </div>
           <p className="text-xl font-semibold mb-4 Poppins">Price: Rs. {product.price}</p>
-          <p className="text-md text-gray-500 line-through mb-4 Poppins">Original Price: Rs. {product.originalPrice}</p>
-
+          <p className="text-md text-gray-500 line-through mb-4 Poppins"> Rs. {product.originalPrice}</p>
+          <ProductCustomization/>
           <div className="flex items-center justify-center gap-4 mt-4">
             {/* Quantity Control */}
             <div className="flex items-center space-x-4 mt-4">
@@ -151,13 +156,16 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
                   +
                 </button>
               </div>
+            
               <button
                 onClick={() => addToCart(product)}
                 className="bg-black text-white px-6 py-2 Poppins rounded hover:bg-gray-800"
               >
                 Add To Cart
               </button>
+             
             </div>
+  
           </div>
         </div>
       </div>
@@ -200,8 +208,11 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
                     className="text-red-500 hover:text-red-700 text-sm sm:text-base"
                   >
                     Remove
+              
                   </button>
+                  
                 </li>
+         
               ))}
             </ul>
 
@@ -260,6 +271,7 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
           </button>
         </form>
       </div>
+     
     </div>
   );
 };

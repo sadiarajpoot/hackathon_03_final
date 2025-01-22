@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import React from 'react';
+import FeedBack from './FeedBack';
 
 const Footer = () => {
   return (
@@ -52,8 +53,9 @@ const Footer = () => {
           Subscribe
         </button>
       </div>
-    </div>
 
+    </div>
+  
     {/* Footer Bottom Line */}
     <div className="mt-8 border-t border-gray-300 pt-4">
       <p className="sm:text-center md:px-8 md:text-left text-[#000000] Poppins text-[16px] leading-[24px] font-normal">
@@ -61,6 +63,7 @@ const Footer = () => {
       </p>
     </div>
   </div>
+  <FeedBack/>
   </>
   );
 };

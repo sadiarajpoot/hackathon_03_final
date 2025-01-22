@@ -1,4 +1,4 @@
-
+"use client"
 import Image from 'next/image';
 import Group8 from "../../public/Images/Group 8.png"
 import Group9 from "../../public/Images/Group 9.png"
@@ -13,6 +13,10 @@ import Link from 'next/link'
 import HomeHeader from './HomeHeader';
 import { HomePageProducts} from '@/data/data';
 import HeroImage from "../../public/Images/Rocket single seater 1.png"
+import AddToCardTosity from './AddToCardTosity';
+import FeedBack from './FeedBack';
+import SocialMediaSharing from './SocialMediaSharing';
+
 
 const HomePage = () => {
 
@@ -96,7 +100,9 @@ const HomePage = () => {
       <div className="flex gap-1 mb-2">
         <button className="bg-slate-500 text-white px-4 py-1 rounded text-[14px] hover:bg-slate-600 transition hover:scale-105">
           Add to Cart
+          <AddToCardTosity/>
         </button>
+
         <button className="bg-green-500 text-white px-4 py-1 rounded text-[14px] hover:bg-green-600 transition hover:scale-105">
           Buy Now
         </button>
@@ -291,6 +297,7 @@ const HomePage = () => {
                 <li>Payment Options</li>
                 <li>Returns</li>
                 <li>Privacy Policies</li>
+                <li><FeedBack/></li>
               </ul>
             </div>
           </div>
@@ -309,6 +316,8 @@ const HomePage = () => {
             <button className=" py-2 text-black font-medium m-2 transition  border-b border-black">
               Subscribe
             </button>
+            <SocialMediaSharing/>
+           
           </div>
         </div>
 
@@ -319,8 +328,7 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-
-
+  
     </>
   )
 }

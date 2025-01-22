@@ -3,7 +3,7 @@ import Image from "next/image";
 import { BsCart3 } from "react-icons/bs";
 import { GoHeart } from "react-icons/go";
 import { IoSearchOutline } from "react-icons/io5";
-import { TbUserExclamation } from "react-icons/tb";
+
 import Link from "next/link";
 import Logo from "../../public/Images/logo.png"
 import {
@@ -13,6 +13,7 @@ import {
 } from "../components/ui/sheet";
 
 import { Menu } from "lucide-react";
+import UserProfile from "./userProfile";
 
 const PagesHeader = () => {
    
@@ -40,7 +41,7 @@ const PagesHeader = () => {
     </div>
     <div className="w-7 h-7">
       <Link href="/">
-        <TbUserExclamation size={30} />
+          <UserProfile />
       </Link>
     </div>
   </div>
@@ -84,8 +85,8 @@ const PagesHeader = () => {
           <IoSearchOutline size={30} />
         </div>
         <div className="w-7 h-7">
-          <Link href="/">
-            <TbUserExclamation size={30} />
+          <Link href="">
+            <UserProfile/>
           </Link>
         </div>
       </div>

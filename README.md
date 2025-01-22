@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🪑 Sadia Furniture Website  
 
-## Getting Started
+**Sadia Furniture** is a cutting-edge e-commerce platform designed to transform the furniture shopping experience. With its modern aesthetics, seamless navigation, and dynamic features, this platform brings the convenience of online shopping and the sophistication of quality furniture directly to your fingertips.  
 
-First, run the development server:
+---
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## 🌟 Project Overview  
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+The Sadia Furniture website is built to bridge the gap between traditional furniture shopping and the efficiency of digital solutions. It offers a user-friendly interface, dynamic product management, and a secure shopping process, ensuring that users can effortlessly browse, select, and purchase high-quality furniture for their homes or offices.  
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+### Key Goals:  
+- **Showcase Premium Furniture:** Display a curated selection of furniture for living rooms, bedrooms, offices, and more.  
+- **Streamline the Shopping Experience:** Simplify browsing, cart management, and order placement.  
+- **Leverage Dynamic Technology:** Manage content dynamically with Sanity CMS for real-time updates.  
+- **Enhance User Convenience:** Enable order tracking, responsive design, and advanced filtering for a seamless experience.  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🚀 Features  
 
-To learn more about Next.js, take a look at the following resources:
+### 🌐 Website Pages:  
+1. **Home Page**:  
+   - Highlight featured products and promotional banners.  
+   - Easy access to categorized furniture sections.  
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+2. **Products Page**:  
+   - Dynamically fetch and display products with detailed descriptions and pricing.  
+   - Organized categories like Bedroom, Living Room, and Office Furniture.  
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+3. **Cart Page**:  
+   - View selected items, adjust quantities, and calculate totals in real time.  
 
-## Deploy on Vercel
+4. **Checkout Page**:  
+   - Secure payment options.  
+   - Track order status with updates like "Processing," "Shipped," and "Delivered."  
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+5. **About Us Page**:  
+   - Share the mission, vision, and dedication to quality service.  
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+6. **Contact Us Page**:  
+   - A simple, user-friendly form to handle customer inquiries and support requests.  
+
+---
+
+### 🛠️ Technology Highlights  
+
+#### Frontend  
+- **HTML5**: Clean and semantic structure for content.  
+- **CSS3**: Responsive styling for modern layouts.  
+- **JavaScript**: Interactivity, dynamic product rendering, and cart management.  
+- **Shadcn UI**:  
+   - Sleek, pre-designed components for enhanced visuals.  
+   - Responsive and modular design optimized for performance.  
+
+#### Backend  
+- **Sanity CMS**:  
+   - A headless CMS for easy management of dynamic data.  
+   - Add, update, or delete product details such as images, descriptions, prices, and categories.  
+   - Instantly reflect CMS updates on the website without redeployment.  
+
+---
+
+## 📱 Responsive Design  
+
+The website is fully optimized for all devices, including:  
+- **Desktops**: Full-screen layouts for immersive browsing.  
+- **Tablets**: Adaptive layouts for convenient shopping.  
+- **Mobile Phones**: Intuitive design for small screens, ensuring smooth navigation.  
+
+---
+
+## 🎨 Why Choose Sadia Furniture?  
+
+- **Dynamic Data Integration**: Products and content are fetched dynamically from Sanity CMS.  
+- **Real-Time Features**: Updates in the CMS instantly reflect on the website.  
+- **User-Friendly**: Easy navigation, advanced filters, and an interactive cart system enhance usability.  
+- **Performance-Focused**: Lightweight components ensure quick load times.  
+
+---
+
+## 💻 Installation and Setup  
+
+### Prerequisites:  
+- **Node.js**: Ensure the latest version is installed on your system.  
+- **Sanity CMS Access**: Ensure you have the API key and project dataset configured.  
+
+### Steps to Run the Project Locally:  
+
+1. **Clone the Repository:**  
+

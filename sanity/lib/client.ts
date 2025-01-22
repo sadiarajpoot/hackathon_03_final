@@ -26,7 +26,7 @@ export const fetchProductById = async (id:any) => {
 
   try {
     const product = await client.fetch(query, { id });
-    return product[0]; // Return the first product
+    return product[0]
   } catch (error) {
     console.error("Error fetching product:", error);
     return null;

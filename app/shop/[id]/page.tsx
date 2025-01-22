@@ -1,22 +1,23 @@
 "use client";
 import { useState, useEffect } from "react";
-import { useRouter } from "next/router";
 import { fetchProductById } from "../../../sanity/lib/client";
 import Image from "next/image";
 import PagesHeader from "@/app/components/PagesHeader";
 import Link from "next/link";
 import { BsCart3 } from "react-icons/bs";
-import { Command } from "lucide-react";
 import Comments from "../../components/Comments";
+import ProductCustomization from "@/app/components/Customization";
+import { toast } from "react-toastify";
+import AddToCardTosity from "@/app/components/AddToCardTosity";
 
 interface ProductPageProps {
   params: { id: string };
 }
 
 const ProductPage = ({ params }: ProductPageProps) => {
-  const [product, setProduct] = useState<any>(null); // Dynamically fetched product
+  const [product, setProduct] = useState<any>(null);
   const [loading, setLoading] = useState(true);
-  const [cart, setCart] = useState<{ id: number; name: string; price: number | string; quantity: number ,image:string }[]>([]);
+  const [cart, setCart] = useState<{ id: number; name: string; price: number | string; quantity: number; image: string }[]>([]);
   const [productQuantity, setProductQuantity] = useState<number>(1);
   const [addedItemMessage, setAddedItemMessage] = useState<string | null>(null);
   const [showCart, setShowCart] = useState<boolean>(false);
@@ -27,11 +28,24 @@ const ProductPage = ({ params }: ProductPageProps) => {
     const fetchProduct = async () => {
       const productData = await fetchProductById(productId);
       setProduct(productData);
-      setLoading(false); // Once product is fetched, set loading to false
+      setLoading(false);
     };
 
     fetchProduct();
+
+    // Load cart from local storage on mount
+    const savedCart = localStorage.getItem("cart");
+    if (savedCart) {
+      setCart(JSON.parse(savedCart));
+    }
   }, [productId]);
+
+  useEffect(() => {
+    // Save cart to local storage whenever cart changes
+    if (cart.length > 0) {
+      localStorage.setItem("cart", JSON.stringify(cart));
+    }
+  }, [cart]);
 
   const addToCart = () => {
     const existingProduct = cart.find((item) => item.id === product?.id);
@@ -45,10 +59,25 @@ const ProductPage = ({ params }: ProductPageProps) => {
     } else {
       setCart([
         ...cart,
-        { id: product?.id || 0, name: product?.name || "Unknown", price: product?.price || 0, quantity: productQuantity ,image:product?.image || 0,},
+        {
+          id: product?.id || 0,
+          name: product?.name || "Unknown",
+          price: product?.price || 0,
+          quantity: productQuantity,
+          image: product?.image?.asset?.url || "/default-image.jpg",
+        },
       ]);
-    }
-
+    } 
+const added=
+toast.success(`${product?.name}) added to cart!`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "dark"
+    });
     setAddedItemMessage(`${product?.name} * ${productQuantity}`);
     setTimeout(() => {
       setAddedItemMessage(null);
@@ -61,7 +90,6 @@ const ProductPage = ({ params }: ProductPageProps) => {
   }, 0);
 
   const validTotalPrice = isNaN(totalPrice) ? 0 : totalPrice;
-
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
   const handleQuantityChange = (action: 'increase' | 'decrease') => {
@@ -114,10 +142,9 @@ const ProductPage = ({ params }: ProductPageProps) => {
         <div className="space-y-6">
           <h1 className="text-4xl font-bold text-gray-800 ">{product?.name}</h1>
           <h3 className="text-2xl font-semibold text-gray-700 Poppins"><span className='text-green-600'>$</span>{product.price}</h3>
-         
           <h3 className="text-xl font-semibold text-gray-800">{product.category}</h3>
           <p className="text-sm text-gray-500 mt-4 pr-6 Poppins">{product?.description}</p>
-
+          <ProductCustomization />
           <div className="mt-6">
             <h3 className="text-xl font-semibold text-gray-800">Customer Reviews</h3>
             <div className="flex items-center mt-2">
@@ -135,43 +162,42 @@ const ProductPage = ({ params }: ProductPageProps) => {
             <button onClick={addToCart} className="bg-black text-white px-6 py-2 Poppins rounded hover:bg-gray-800">
               Add To Cart
             </button>
+          <AddToCardTosity />
           </div>
         </div>
       </div>
 
       {showCart && (
-  <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 z-50">
-    <div className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 mx-auto mt-20 bg-white p-4 rounded-lg shadow-lg">
-      <h3 className="text-xl font-semibold text-gray-800">Your Cart</h3>
-      <ul className="mt-4 space-y-4">
-        {cart.map((item, index) => (
-          <li key={index} className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              {/* Updated Image */}
-              <Image
-                src={item.image || "/default-image.jpg"} // Fallback to a default image if item.image is undefined
-                alt={item.name}
-                width={50}
-                height={50}
-                className="w-12 h-12 object-cover rounded"
-              />
-              <span>{item.name} - {item.price} x {item.quantity}</span>
+        <div className="fixed top-0 left-0 w-full h-full bg-gray-900 bg-opacity-50 z-50">
+          <div className="w-full sm:w-3/4 md:w-1/2 lg:w-1/3 mx-auto mt-20 bg-white p-4 rounded-lg shadow-lg">
+            <h3 className="text-xl font-semibold text-gray-800">Your Cart</h3>
+            <ul className="mt-4 space-y-4">
+              {cart.map((item, index) => (
+                <li key={index} className="flex items-center justify-between">
+                  <div className="flex items-center space-x-4">
+                    <Image
+                      src={item.image || "/default-image.jpg"}
+                      alt={item.name}
+                      width={50}
+                      height={50}
+                      className="w-12 h-12 object-cover rounded"
+                    />
+                    <span>{item.name} - {item.price} x {item.quantity}</span>
+                  </div>
+                  <button onClick={() => removeFromCart(item.id)} className="text-red-600 Poppins">Remove</button>
+                </li>
+              ))}
+            </ul>
+
+            <div className="mt-4 flex justify-between">
+              <span>Total: ${validTotalPrice.toFixed(2)}</span>
+              <button onClick={() => setShowCart(false)} className="bg-blue-400 text-white px-6 py-3 rounded-lg font-bold Poppins hover:bg-blue-500">
+                Close
+              </button>
             </div>
-            <button onClick={() => removeFromCart(item.id)} className="text-red-600 Poppins">Remove</button>
-          </li>
-        ))}
-      </ul>
-
-      <div className="mt-4 flex justify-between">
-        <span>Total: ${validTotalPrice.toFixed(2)}</span>
-        <button onClick={() => setShowCart(false)} className="bg-blue-400 text-white px-6 py-3 rounded-lg font-bold Poppins hover:bg-blue-500">
-          Close
-        </button>
-      </div>
-    </div>
-  </div>
-)}
-
+          </div>
+        </div>
+      )}
 
       <div className="fixed bottom-8 right-8 flex items-center Poppins justify-center bg-[#4C4C4C] text-white rounded-full p-4 cursor-pointer" onClick={() => setShowCart(!showCart)}>
         <BsCart3 />
@@ -182,12 +208,9 @@ const ProductPage = ({ params }: ProductPageProps) => {
         )}
       </div>
 
-      {addedItemMessage && (
-        <div className="absolute top-20 left-1/2 transform -translate-x-1/2 bg-green-500 Poppins text-white px-4 py-2 rounded">
-          {addedItemMessage} added to cart!
-        </div>
-      )}
-      <Comments/>
+
+
+      <Comments />
     </div>
   );
 };

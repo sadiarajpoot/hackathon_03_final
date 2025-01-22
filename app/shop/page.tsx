@@ -11,6 +11,7 @@ import PagesHeader from "../components/PagesHeader";
 import { client } from '@/sanity-migration/sanityClient';
 
 
+
 // Fetch products from Sanity
 
 const fetchProducts = async () => {
