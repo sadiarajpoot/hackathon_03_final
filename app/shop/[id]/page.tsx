@@ -1,6 +1,5 @@
 "use client";
 import { useState, useEffect } from "react";
-import { fetchProductById } from "../../../sanity/lib/client";
 import Image from "next/image";
 import PagesHeader from "@/app/components/PagesHeader";
 import Link from "next/link";
@@ -9,6 +8,31 @@ import Comments from "../../components/Comments";
 import ProductCustomization from "@/app/components/Customization";
 import { toast } from "react-toastify";
 import AddToCardTosity from "@/app/components/AddToCardTosity";
+import { client } from "@/sanity/lib/client";
+const fetchProductById = async (id:any) => {
+  const query = `*[_type == "product" && _id == $id] {
+    _id,
+    name,
+    price,
+    image {
+      asset -> {
+        url
+      }
+    },
+    discountPercentage,
+    category,
+    description,
+    review
+  }`;
+
+  try {
+    const product = await client.fetch(query, { id });
+    return product[0]
+  } catch (error) {
+    console.error("Error fetching product:", error);
+    return null;
+  }
+};
 
 interface ProductPageProps {
   params: { id: string };
@@ -16,7 +40,6 @@ interface ProductPageProps {
 
 const ProductPage = ({ params }: ProductPageProps) => {
   const [product, setProduct] = useState<any>(null);
-  const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<{ id: number; name: string; price: number | string; quantity: number; image: string }[]>([]);
   const [productQuantity, setProductQuantity] = useState<number>(1);
  
@@ -28,7 +51,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
     const fetchProduct = async () => {
       const productData = await fetchProductById(productId);
       setProduct(productData);
-      setLoading(false);
+
     };
 
     fetchProduct();
@@ -101,10 +124,6 @@ toast.success(`${product?.name}) added to cart!`, {
     setCart(updatedCart);
   };
 
-  if (loading) return <div>Loading...</div>;
-
-  if (!product) return <div>Product not found</div>;
-
   return (
     <div className="container mx-auto px-4 py-[200px]">
       <PagesHeader />
@@ -121,7 +140,6 @@ toast.success(`${product?.name}) added to cart!`, {
           <li className="text-gray-800 Poppins">{product?.name}</li>
         </ol>
       </nav>
-
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mt-8">
         <div className="flex justify-center items-center">
           <div className="rounded-lg overflow-hidden shadow-sm border-none w-full max-w-lg sm:max-w-xl md:max-w-2xl lg:max-w-4xl">
@@ -137,8 +155,8 @@ toast.success(`${product?.name}) added to cart!`, {
 
         <div className="space-y-6">
           <h1 className="text-4xl font-bold text-gray-800 ">{product?.name}</h1>
-          <h3 className="text-2xl font-semibold text-gray-700 Poppins"><span className='text-green-600'>$</span>{product.price}</h3>
-          <h3 className="text-xl font-semibold text-gray-800">{product.category}</h3>
+          <h3 className="text-2xl font-semibold text-gray-700 Poppins"><span className='text-green-600'>$</span>{product?.price}</h3>
+          <h3 className="text-xl font-semibold text-gray-800">{product?.category}</h3>
           <p className="text-sm text-gray-500 mt-4 pr-6 Poppins">{product?.description}</p>
           <ProductCustomization />
           <div className="mt-6">

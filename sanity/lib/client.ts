@@ -8,27 +8,3 @@ export const client = createClient({
   apiVersion,
   useCdn: true, // Set to false if statically generating pages, using ISR or tag-based revalidation
 })
-export const fetchProductById = async (id:any) => {
-  const query = `*[_type == "product" && _id == $id] {
-    _id,
-    name,
-    price,
-    image {
-      asset -> {
-        url
-      }
-    },
-    discountPercentage,
-    category,
-    description,
-    review
-  }`;
-
-  try {
-    const product = await client.fetch(query, { id });
-    return product[0]
-  } catch (error) {
-    console.error("Error fetching product:", error);
-    return null;
-  }
-};
