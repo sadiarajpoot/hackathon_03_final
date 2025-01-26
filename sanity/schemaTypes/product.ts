@@ -1,3 +1,6 @@
+import { title } from "node:process";
+import { optional } from "zod";
+
 export default {
     name: 'product',
     title: 'Product',
