@@ -8,9 +8,7 @@ import Round from "../../public/Images/ci_grid-big-round.png";
 import List from "../../public/Images/bi_view-list.png";
 import Footer from '../components/Footer';
 import PagesHeader from "../components/PagesHeader";
-// import { client } from '@/sanity-migration/sanityClient';
-import {client} from "../../sanity-migration/sanityClient"
-
+import { client } from '@/sanity/lib/client';
 // Fetch products from Sanity
 
 const fetchProducts = async () => {

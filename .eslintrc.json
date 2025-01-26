@@ -1,16 +1,6 @@
 {
-  "extends": [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:next/recommended"  // Add this line for Next.js plugin
-  ],
-  "parser": "@typescript-eslint/parser",
-  "plugins": [
-    "@typescript-eslint",
-    "next"  // Add this line for the Next.js plugin
-  ],
+  "extends": ["next/core-web-vitals", "next/typescript"],
   "rules": {
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "warn"  // Optional: Change to "off" or "error" based on your preference
+    "@typescript-eslint/no-explicit-any": "off"
   }
 }

@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { client } from './sanityClient.js';
+import { client } from '@/sanity/lib/client'; 
 
 async function uploadImageToSanity(imageUrl: string): Promise<string> {
   try {

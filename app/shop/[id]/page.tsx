@@ -19,7 +19,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
   const [loading, setLoading] = useState(true);
   const [cart, setCart] = useState<{ id: number; name: string; price: number | string; quantity: number; image: string }[]>([]);
   const [productQuantity, setProductQuantity] = useState<number>(1);
-  const [addedItemMessage, setAddedItemMessage] = useState<string | null>(null);
+ 
   const [showCart, setShowCart] = useState<boolean>(false);
 
   const productId = params.id;
@@ -68,7 +68,6 @@ const ProductPage = ({ params }: ProductPageProps) => {
         },
       ]);
     } 
-const added=
 toast.success(`${product?.name}) added to cart!`, {
       position: "top-right",
       autoClose: 3000,
@@ -78,10 +77,7 @@ toast.success(`${product?.name}) added to cart!`, {
       draggable: true,
       theme: "dark"
     });
-    setAddedItemMessage(`${product?.name} * ${productQuantity}`);
-    setTimeout(() => {
-      setAddedItemMessage(null);
-    }, 3000);
+   
   };
 
   const totalPrice = cart.reduce((total, item) => {
