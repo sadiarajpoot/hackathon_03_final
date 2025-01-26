@@ -9,7 +9,8 @@ import ProductCustomization from "@/app/components/Customization";
 import { toast } from "react-toastify";
 import AddToCardTosity from "@/app/components/AddToCardTosity";
 import { client } from "@/sanity/lib/client";
-const fetchProductById = async (id:any) => {
+
+const fetchProductById = async (id: string) => {
   const query = `*[_type == "product" && _id == $id] {
     _id,
     name,
@@ -27,7 +28,7 @@ const fetchProductById = async (id:any) => {
 
   try {
     const product = await client.fetch(query, { id });
-    return product[0]
+    return product[0];
   } catch (error) {
     console.error("Error fetching product:", error);
     return null;
@@ -42,7 +43,6 @@ const ProductPage = ({ params }: ProductPageProps) => {
   const [product, setProduct] = useState<any>(null);
   const [cart, setCart] = useState<{ id: number; name: string; price: number | string; quantity: number; image: string }[]>([]);
   const [productQuantity, setProductQuantity] = useState<number>(1);
- 
   const [showCart, setShowCart] = useState<boolean>(false);
 
   const productId = params.id;
@@ -51,7 +51,6 @@ const ProductPage = ({ params }: ProductPageProps) => {
     const fetchProduct = async () => {
       const productData = await fetchProductById(productId);
       setProduct(productData);
-
     };
 
     fetchProduct();
@@ -90,17 +89,16 @@ const ProductPage = ({ params }: ProductPageProps) => {
           image: product?.image?.asset?.url || "/default-image.jpg",
         },
       ]);
-    } 
-toast.success(`${product?.name}) added to cart!`, {
+    }
+    toast.success(`${product?.name} added to cart!`, {
       position: "top-right",
       autoClose: 3000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      theme: "dark"
+      theme: "dark",
     });
-   
   };
 
   const totalPrice = cart.reduce((total, item) => {
@@ -111,10 +109,10 @@ toast.success(`${product?.name}) added to cart!`, {
   const validTotalPrice = isNaN(totalPrice) ? 0 : totalPrice;
   const totalQuantity = cart.reduce((total, item) => total + item.quantity, 0);
 
-  const handleQuantityChange = (action: 'increase' | 'decrease') => {
-    if (action === 'increase') {
+  const handleQuantityChange = (action: "increase" | "decrease") => {
+    if (action === "increase") {
       setProductQuantity(productQuantity + 1);
-    } else if (action === 'decrease' && productQuantity > 1) {
+    } else if (action === "decrease" && productQuantity > 1) {
       setProductQuantity(productQuantity - 1);
     }
   };
@@ -176,7 +174,7 @@ toast.success(`${product?.name}) added to cart!`, {
             <button onClick={addToCart} className="bg-black text-white px-6 py-2 Poppins rounded hover:bg-gray-800">
               Add To Cart
             </button>
-          <AddToCardTosity />
+            <AddToCardTosity />
           </div>
         </div>
       </div>
@@ -212,19 +210,13 @@ toast.success(`${product?.name}) added to cart!`, {
           </div>
         </div>
       )}
-
-      <div className="fixed bottom-8 right-8 flex items-center Poppins justify-center bg-[#4C4C4C] text-white rounded-full p-4 cursor-pointer" onClick={() => setShowCart(!showCart)}>
-        <BsCart3 />
-        {totalQuantity > 0 && (
-          <span className="absolute top-0 right-0 Poppins bg-red-500 text-white rounded-full w-6 h-6 flex items-center justify-center text-xs">
-            {totalQuantity}
-          </span>
-        )}
+      <div
+        onClick={() => setShowCart(!showCart)}
+        className="fixed bottom-8 right-8 z-50 bg-green-500 text-white p-4 rounded-full shadow-lg cursor-pointer">
+        <BsCart3 size={30} />
+        <span className="absolute top-0 right-0 text-xs bg-red-500 text-white rounded-full px-2 py-1">{totalQuantity}</span>
       </div>
-
-
-
-      <Comments />
+      <Comments/>
     </div>
   );
 };
