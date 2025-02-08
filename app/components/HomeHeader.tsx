@@ -75,14 +75,15 @@ const HomeHeader = () => {
             <Sheet>
            
   {/* Auth Button Wrapper */}
-  <div className="w-28 h-12 flex items-center justify-center">
-    <button className="w-full h-full text-black font-medium rounded-lg transition-all flex items-center justify-center">
-      <AuthButtons />
-    </button>
-    <div className="w-7 h-7 ">
-      <IoSearchOutline size={25} onClick={handleSearchClick} className="cursor-pointer absolute left-[74px] top-3" />
-    </div>
+  <div className="w-28 h-12 flex items-center justify-center sm:block md:hidden">
+  <button className="w-full h-full text-black font-medium rounded-lg transition-all flex items-center justify-center">
+    <AuthButtons />
+  </button>
+  <div className="w-7 h-7">
+    <IoSearchOutline size={25} onClick={handleSearchClick} className="cursor-pointer absolute left-[74px] top-3" />
   </div>
+</div>
+
 
   {/* Menu Button */}
   <SheetTrigger className="flex md:hidden items-center space-x-9">
