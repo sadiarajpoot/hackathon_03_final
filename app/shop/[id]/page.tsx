@@ -97,7 +97,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
       closeOnClick: true,
       pauseOnHover: true,
       draggable: true,
-      theme: "dark",
+      theme: "light",
     });
   };
 
@@ -174,7 +174,14 @@ const ProductPage = ({ params }: ProductPageProps) => {
             <button onClick={addToCart} className="bg-black text-white px-6 py-2 Poppins rounded hover:bg-gray-800">
               Add To Cart
             </button>
+            <button
+    
+      className="bg-green-500 text-white px-6 py-2 Poppins rounded hover:bg-green-600 h-10  "
+    >
+   <a href="/checkout">Buy Now</a>
+    </button>
             <AddToCardTosity />
+            
           </div>
         </div>
       </div>

@@ -8,6 +8,7 @@ import { useState, useEffect } from 'react';
 import { BsCart3 } from 'react-icons/bs';
 
 
+
 type Product = {
   id: number;
   name: string;
@@ -138,7 +139,7 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
           <p className="text-xl font-semibold mb-4 Poppins">Price: Rs. {product.price}</p>
           <p className="text-md text-gray-500 line-through mb-4 Poppins"> Rs. {product.originalPrice}</p>
           <ProductCustomization/>
-          <div className="flex items-center justify-center gap-4 mt-4">
+          <div className="flex gap-4 mt-4">
             {/* Quantity Control */}
             <div className="flex items-center space-x-4 mt-4">
               <div className="flex items-center border border-gray-300 rounded">
@@ -163,9 +164,14 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
               >
                 Add To Cart
               </button>
-             
+              <button
+    
+      className="bg-green-500 text-white px-6 py-2 Poppins rounded hover:bg-green-600 h-10  "
+    >
+   <a href="/checkout">Buy Now</a>
+    </button>
             </div>
-  
+           
           </div>
         </div>
       </div>

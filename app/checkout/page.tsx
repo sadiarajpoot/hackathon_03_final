@@ -158,23 +158,23 @@ const Checkout = () => {
 
   {/* Order Summary Section */}
   <div className="border border-gray-200 rounded-lg p-6 bg-white">
-    <h2 className="text-xl font-semibold mb-4 Poppins">Product</h2>
+    {/* <h2 className="text-xl font-semibold mb-4 Poppins">Product</h2> */}
     <div className="mb-4">
       {/* Product Details */}
-      <div className="flex justify-between mb-2 Poppins">
+      {/* <div className="flex justify-between mb-2 Poppins">
         <span>Asgard Sofa x 1</span>
         <span>Rs. 250,000.00</span>
-      </div>
+      </div> */}
       {/* Subtotal */}
-      <div className="flex justify-between Poppins">
+      {/* <div className="flex justify-between Poppins">
         <span>Subtotal</span>
         <span>Rs. 250,000.00</span>
-      </div>
+      </div> */}
       {/* Total */}
-      <div className="flex justify-between font-semibold text-lg Poppins">
+      {/* <div className="flex justify-between font-semibold text-lg Poppins">
         <span>Total</span>
         <span className="text-[#B88E2F]">Rs. 250,000.00</span>
-      </div>
+      </div> */}
     </div>
 
     {/* Payment Method */}

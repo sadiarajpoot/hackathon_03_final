@@ -13,7 +13,6 @@ import {
 } from "../components/ui/sheet";
 
 import { Menu } from "lucide-react";
-import UserProfile from "./userProfile";
 
 const PagesHeader = () => {
    
@@ -40,9 +39,9 @@ const PagesHeader = () => {
       <IoSearchOutline size={30} />
     </div>
     <div className="w-7 h-7">
-      <Link href="/">
+      {/* <Link href="/">
           <UserProfile />
-      </Link>
+      </Link> */}
     </div>
   </div>
 
@@ -72,7 +71,7 @@ const PagesHeader = () => {
     {/* Menu Content */}
     <SheetContent>
       {/* Carts Section */}
-      <div className="flex flex-row space-x-5 mt-6">
+      {/* <div className="flex flex-row space-x-5 mt-6">
         <Link href="/cart">
           <div className="w-[28px] h-[28px]">
             <BsCart3 size={30} />
@@ -89,7 +88,7 @@ const PagesHeader = () => {
             <UserProfile/>
           </Link>
         </div>
-      </div>
+      </div> */}
 
       {/* Navigation Links */}
       <ul className="flex flex-col space-y-10 mt-20 w-full font-medium">

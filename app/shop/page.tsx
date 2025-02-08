@@ -116,7 +116,7 @@ const Shop = async () => {
                   <div className="flex w-full items-center mt-2">
                     <h3 className="text-xl font-semibold text-gray-700"><span className='text-green-600'>$</span>{product.price}</h3>
                     <h3 className="text-sm  font-semibold text-gray-500 ml-2"><span className='text-green-600'>$</span>{product.discountPercentage}</h3>
-                    <h3 className="text-xl font-semibold text-gray-800">{product.category}</h3>
+                    {/* <h3 className="text-xl font-semibold text-gray-800">{product.category}</h3> */}
                     
                   </div>
                   <div className="flex w-full items-center mt-2">

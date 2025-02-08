@@ -31,7 +31,7 @@ The Sadia Furniture website is built to bridge the gap between traditional furni
    - View selected items, adjust quantities, and calculate totals in real time.  
 
 4. **Checkout Page**:  
-   - Secure payment options.  
+   - Secure payment options.  (working on it 🌟🌟🌟)
    - Track order status with updates like "Processing," "Shipped," and "Delivered."  
 
 5. **About Us Page**:  
@@ -84,7 +84,4 @@ The website is fully optimized for all devices, including:
 - **Node.js**: Ensure the latest version is installed on your system.  
 - **Sanity CMS Access**: Ensure you have the API key and project dataset configured.  
 
-### Steps to Run the Project Locally:  
-
-1. **Clone the Repository:**  
 

@@ -4,6 +4,8 @@ import ContactLogo from "../../public/Images/contactlogo.png"
 import arrow from "../../public/Images/dashicons_arrow-down-alt2.png"
 import PagesHeader from '../components/PagesHeader'
 import ContactDiv from "../../public/Images/contact.png"
+import FeedBack from '../components/FeedBack';
+import SocialMediaSharing from '../components/SocialMediaSharing';
 
 
 const Page = () => {
@@ -138,6 +140,7 @@ const Page = () => {
                 <li>Payment Options</li>
                 <li>Returns</li>
                 <li>Privacy Policies</li>
+                <li><FeedBack/></li>
               </ul>
             </div>
           </div>
@@ -164,6 +167,7 @@ const Page = () => {
           <p className="sm:text-center md:px-8 md:text-left text-[#000000] Poppins text-[16px] leading-[24px] font-normal">
             2022 Meubel House. All rights reserved.
           </p>
+          <SocialMediaSharing/>
         </div>
       </div>
     </>

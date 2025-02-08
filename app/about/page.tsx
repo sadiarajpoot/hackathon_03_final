@@ -2,13 +2,17 @@
 import Image from "next/image"; 
 import Link from "next/link";
 import { FaShoppingCart } from "react-icons/fa";
+import PagesHeader from "../components/PagesHeader";
+import Footer from "../components/Footer";
 
 const AboutPage = () => {
   return (
+    
     <div className="container mx-auto p-4">
+      <PagesHeader/>
       {/* Hero Section */}
       <div className="text-center">
-        <h1 className="text-4xl font-bold mb-4 Poppins">About Us</h1>
+        <h1 className="text-4xl font-bold mb-4 Poppins mt-16">About Us</h1>
         <p className="text-lg text-gray-700 mb-8 Poppins">
           We bring comfort and style to your home with our exclusive collection of high-quality sofas.
         </p>
@@ -87,6 +91,7 @@ const AboutPage = () => {
 
 
       </div>
+      <Footer/>
     </div>
   );
 };

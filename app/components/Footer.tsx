@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import React from 'react';
 import FeedBack from './FeedBack';
+import SocialMediaSharing from './SocialMediaSharing';
 
 const Footer = () => {
   return (
@@ -34,6 +35,8 @@ const Footer = () => {
             <li>Payment Options</li>
             <li>Returns</li>
             <li>Privacy Policies</li>
+            <li>  <FeedBack/></li>
+
           </ul>
         </div>
       </div>
@@ -61,9 +64,10 @@ const Footer = () => {
       <p className="sm:text-center md:px-8 md:text-left text-[#000000] Poppins text-[16px] leading-[24px] font-normal">
         2022 Meubel House. All rights reserved.
       </p>
+      <SocialMediaSharing/>
     </div>
   </div>
-  <FeedBack/>
+
   </>
   );
 };

@@ -3,7 +3,7 @@ import { useState } from "react";
 import Link from "next/link";
 import Image from "next/image";
 import { BsCart3 } from "react-icons/bs";
-import {IoSearchOutline } from "react-icons/io5";
+import { IoSearchOutline } from "react-icons/io5";
 import Logo from "../../public/Images/logo.png";
 import {
   Sheet,
@@ -12,7 +12,8 @@ import {
 } from "../components/ui/sheet";
 
 import { Menu } from "lucide-react";
-import UserProfile from "./userProfile";
+import AuthButtons from "./AuthButtons";
+
 
 
 
@@ -28,7 +29,7 @@ const HomeHeader = () => {
 
   return (
     <>
-     
+
 
       <div className="absolute w-full h-[100px] left-0 top-0 p-4 bg-[#FBEBB5] z-50 flex justify-end">
         {/* Logo */}
@@ -39,32 +40,18 @@ const HomeHeader = () => {
         {/* Icons Container */}
         <div className="hidden absolute md:flex md:space-x-8 md:right-8 md:top-[36px]">
 
-          {/* <div className="w-18 h-4">
-            <button className="border border-slate-500 text-slate-700 px-4 py-2 rounded-sm hover:bg-blue-600 transition">
-              <Link href="/login">Login</Link>
-            </button>
-          </div> */}
 
-          {/* <div className="w-18 h-4">
-            <button className="border border-slate-500 text-slate-700 px-4 py-2 rounded-sm hover:bg-blue-600 transition">
-              <Link href="/signup">Sign In</Link>
-            </button>
-          </div> */}
 
-          <div className="w-7 h-7">
+          <div className="w-7 h-7 ">
             <IoSearchOutline size={30} onClick={handleSearchClick} className="cursor-pointer" />
           </div>
-          <div className="w-7 h-7 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-2 hover:scale-105">
-  <Link href="">
-    <UserProfile />
-  </Link>
-</div>
-<button className="Poppins text-slate-500 font-medium "><Link href="/signup">Sign Up</Link></button>
-<button className="Poppins text-slate-500 font-medium"><Link href="/login">Login</Link></button>
+          
+          <AuthButtons />
 
         </div>
 
         {/* Desktop Navigation */}
+
         <div className="flex ml-[300px] md:h-[24px] md:left-[180px] md:top-[38px] absolute">
           <ul className="hidden md:flex flex-row justify-between space-x-9 w-full Poppins font-medium">
             <Link href="/">
@@ -78,49 +65,60 @@ const HomeHeader = () => {
             </Link>
             <Link href="/contact">
               <li className="cursor-pointer">Contact</li>
+
             </Link>
+          
           </ul>
 
-          <div className="flex justify-end mt-4">
+          <div className="flex justify-end ">
+
             <Sheet>
-              <SheetTrigger className="md:hidden">
-                <Menu className="w-10 h-10" />
-              </SheetTrigger>
+           
+  {/* Auth Button Wrapper */}
+  <div className="w-28 h-12 flex items-center justify-center">
+    <button className="w-full h-full text-black font-medium rounded-lg transition-all flex items-center justify-center">
+      <AuthButtons />
+    </button>
+    <div className="w-7 h-7 ">
+      <IoSearchOutline size={25} onClick={handleSearchClick} className="cursor-pointer absolute left-[74px] top-3" />
+    </div>
+  </div>
+
+  {/* Menu Button */}
+  <SheetTrigger className="flex md:hidden items-center space-x-9">
+  <Menu className="w-10 h-10" />
+</SheetTrigger>
+
 
               {/* Menu Content */}
               <SheetContent>
                 {/* Carts Section */}
+
+      
+                <div className=" w-7 h-7 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-2 hover:scale-105">
+                  <Link href="/">
+                    {/* <UserProfile /> */}
+                  </Link>
+                </div>
                 <div className="flex flex-row space-x-5 mt-6">
                   <Link href="/cart">
                     <div className="w-[28px] h-[28px] hidden">
                       <BsCart3 size={30} />
                     </div>
                   </Link>
-                  
-                  <div className="flex items-center rounded-lg p-2 w-full max-w-md mt-9">
-      {/* Search Icon inside the Input Field */}
-      <div className="absolute left-2">
-        <IoSearchOutline size={25} className="text-gray-500 absolute left-12 top-[-12px]" />
-      </div>
 
-      {/* Search Input Field */}
-      <input
-        type="text"
-        placeholder="Search for products..."
-        className="w-full pl-10 pr-3 py-2 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 rounded-lg"
-      />
-    </div>
-          <div className="mt-12 w-7 h-7 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-2 hover:scale-105">
-  <Link href="/">
-  <UserProfile />
-  </Link>
-</div>
 
-</div>
+                </div>
                 {/* Navigation Links */}
+                {/* <div className="w-7 h-7">
+                  <IoSearchOutline size={30} onClick={handleSearchClick} className="cursor-pointer absolute top-6" />
+                </div> */}
+                
                 <ul className="flex flex-col space-y-10 space-x-9 mt-20 w-full font-bold ">
+        
                   <Link href="/">
-                    <li className="cursor-pointer ml-9">Home</li>
+
+                   <li className="cursor-pointer ml-9">Home</li>
                   </Link>
                   <Link href="/shop">
                     <li className="cursor-pointer">Shop</li>
@@ -131,16 +129,19 @@ const HomeHeader = () => {
                   <Link href="/contact">
                     <li className="cursor-pointer">Contact</li>
                   </Link>
+
                 </ul>
-               <div className="flex justify-around mt-24 mr-9">
-               <button className="Poppins text-slate-500 font-medium"><Link href="/signup">Sign Up</Link></button>
-               <button className="w-28 h-12 Poppins text-slate-500 font-medium border border-slate-400"><Link href="/login">Login</Link></button>
-               </div>
+                <div className="flex justify-around mt-24 mr-9">
+                  {/* <button className="Poppins text-slate-500 font-medium"><Link href="/signup">Sign Up</Link></button>
+               <button className="w-28 h-12 Poppins text-slate-500 font-medium border border-slate-400"><Link href="/login">Login</Link></button> */}
+
+
+                </div>
               </SheetContent>
             </Sheet>
           </div>
         </div>
-        
+
       </div>
 
       {/* Search Modal */}
@@ -164,7 +165,7 @@ const HomeHeader = () => {
             />
           </div>
         </div>
-        
+
       )}
 
     </>
