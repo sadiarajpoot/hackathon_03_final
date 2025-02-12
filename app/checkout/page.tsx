@@ -4,24 +4,27 @@ import Link from 'next/link';
 import AccountLogo from "../../public/Images/accountLogo.png"
 import arrow from "../../public/Images/dashicons_arrow-down-alt2.png"
 import PagesHeader from '../components/PagesHeader';
+import FeedBack from '../components/FeedBack';
+import SocialMediaSharing from '../components/SocialMediaSharing';
 
 const Checkout = () => {
     return (
         <>
         <PagesHeader/>
-      <div className="absolute w-full h-[316px] left-0 top-[100px] bg-cover bg-no-repeat filter blur-[3px]" style={{ backgroundImage: 'url(/Images/shop.png)' }}>
-      </div>
-      <Image src={AccountLogo} alt="shopLogo" className="absolute w-[160px] h-[140px] left-[658px] top-[161px]"></Image>
-      <div className="absolute w-[121px] h-[24px] left-[660px] top-[300px]">
-        <h3 className="absolute text-black Poppins font-medium text-[16px] leading-[24px]">
-          Home  
-        </h3>
-        <Image src={arrow} alt="arrow" className='absolute left-[55px]' />
-        <h3 className="absolute left-[80px] text-black Poppins font-light text-[16px] leading-[24px]">
-          CheckOut
-        </h3>
-      </div>
-      <div className="mt-[500px] w-full px-4 py-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="relative w-full h-[316px] bg-cover bg-no-repeat filter blur-[3px]" style={{ backgroundImage: 'url(/Images/shop.png)' }}></div>
+
+{/* Logo Centered */}
+<div className="absolute inset-x-0 top-[161px] flex justify-center">
+  <Image src={AccountLogo} alt="shopLogo" className="w-[160px] h-[140px] sm:w-[120px] sm:h-[100px]" />
+</div>
+
+<div className="absolute inset-x-0 top-[300px] flex justify-center items-center gap-2 text-center">
+  <h3 className="text-black Poppins font-medium text-[16px] sm:text-[14px]">Home</h3>
+  <Image src={arrow} alt="arrow" className="w-4 h-4 sm:w-3 sm:h-3" />
+  <h3 className="text-black Poppins font-light text-[16px] sm:text-[14px]">CheckOut</h3>
+</div>
+
+      <div className="mt-[50px] w-full px-4 py-8 max-w-6xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
   {/* Billing Details Section */}
   <div className="border border-gray-200 rounded-lg p-6 bg-white">
     <h2 className="text-xl font-semibold mb-4 Poppins">Billing details</h2>
@@ -262,6 +265,7 @@ const Checkout = () => {
             <li>Payment Options</li>
             <li>Returns</li>
             <li>Privacy Policies</li>
+            <li><FeedBack/></li>
           </ul>
         </div>
       </div>
@@ -289,6 +293,7 @@ const Checkout = () => {
         2022 Meubel House. All rights reserved.
       </p>
     </div>
+    <SocialMediaSharing/>
   </div>
 
       </>

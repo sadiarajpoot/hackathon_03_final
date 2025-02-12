@@ -94,7 +94,6 @@ const HomeHeader = () => {
               {/* Menu Content */}
               <SheetContent>
                 {/* Carts Section */}
-
       
                 <div className=" w-7 h-7 flex items-center justify-center cursor-pointer transition-all duration-300 rounded-full p-2 hover:scale-105">
                   <Link href="/">
@@ -115,7 +114,7 @@ const HomeHeader = () => {
                   <IoSearchOutline size={30} onClick={handleSearchClick} className="cursor-pointer absolute top-6" />
                 </div> */}
                 
-                <ul className="flex flex-col space-y-10 space-x-9 mt-20 w-full font-bold ">
+                <ul className="flex flex-col space-y-10 space-x-9 mt-20 w-full font-medium ">
         
                   <Link href="/">
 

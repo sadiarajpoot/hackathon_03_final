@@ -9,6 +9,7 @@ import List from "../../public/Images/bi_view-list.png";
 import Footer from '../components/Footer';
 import PagesHeader from "../components/PagesHeader";
 import { client } from '@/sanity/lib/client';
+import { FaCartPlus } from 'react-icons/fa';
 // Fetch products from Sanity
 
 const fetchProducts = async () => {
@@ -116,12 +117,16 @@ const Shop = async () => {
                   <div className="flex w-full items-center mt-2">
                     <h3 className="text-xl font-semibold text-gray-700"><span className='text-green-600'>$</span>{product.price}</h3>
                     <h3 className="text-sm  font-semibold text-gray-500 ml-2"><span className='text-green-600'>$</span>{product.discountPercentage}</h3>
+                    <button className="flex-1 text-slate-600 rounded transition hover:scale-105 flex items-end justify-end">
+          <FaCartPlus size={25} className="mr-2" /> {/* Cart Icon */}
+       
+        </button>
                     {/* <h3 className="text-xl font-semibold text-gray-800">{product.category}</h3> */}
                     
                   </div>
-                  <div className="flex w-full items-center mt-2">
+                  {/* <div className="flex w-full items-center mt-2">
                     <h3 className="text-sm font-normal text-gray-800 Poppins">{product.description}</h3>
-                  </div>
+                  </div> */}
                 </div>
               </div>
             </Link>

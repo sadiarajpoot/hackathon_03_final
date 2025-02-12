@@ -1,23 +1,7 @@
 
 import { Description } from '@radix-ui/react-dialog';
 import Image from 'next/image'
-// import Item1 from "../../public/Images/item1.png"
-// import Item2 from "../../public/Images/item 2.png"
-// import Item3 from "../../public/Images/item 3.png"
-// import Item4 from "../../public/Images/item 4.png"
-// import Item5 from "../../public/Images/item 5.png"
-// import Item6 from "../../public/Images/item 6.png"
-// import Item7 from "../../public/Images/item 7.png"
-// import Item8 from "../../public/Images/item 8.png"
-// import Item9 from "../../public/Images/item 9.png"
-// import Item10 from "../../public/Images/item 10.png"
-// import Item11 from "../../public/Images/item11.png"
-// import Item12 from "../../public/Images/item 12.png"
-// import Item13 from "../../public/Images/item 13.png"
-// import Item14 from "../../public/Images/item14.png"
-// import Item15 from "../../public/Images/item 15.png"
-// import Item16 from "../../public/Images/item16.png"
-// import Link from 'next/link'
+
 
 export const products = [
   { 
@@ -275,8 +259,8 @@ export const HomePageProducts: Product[] = [
   {
     id: 1,
     name: "Trenton modular sofa_3",
-    price: 25000,
-    originalPrice: 30000,
+    price: 300,
+    originalPrice: 350,
     rating: 4,
     image: "/Images/Mask group11.png",
     description: "The Trenton modular sofa_3 offers a luxurious and comfortable seating experience, with a versatile modular design that fits perfectly in your living room or any modern space.",
@@ -301,8 +285,8 @@ export const HomePageProducts: Product[] = [
   {
     id: 2,
     name: "Outdoor bar table and stool",
-    price: 30000,
-    originalPrice: 35000,
+    price: 200,
+    originalPrice: 220,
     rating: 4,
     image: "/Images/Mask group 16.png",
     description: "This stylish outdoor bar table and stool set is perfect for patios and gardens, offering a sleek design and comfortable seating for your outdoor gatherings.",
@@ -327,8 +311,8 @@ export const HomePageProducts: Product[] = [
   {
     id: 3,
     name: "Plain console with teak mirror",
-    price: 25000,
-    originalPrice: 28000,
+    price: 500,
+    originalPrice: 520,
     rating: 4,
     image: "/Images/Mask group 17.png",
     description: "Elegant console with a teak mirror, perfect for your living room or entryway. The sleek design adds a touch of sophistication to any space.",
@@ -353,8 +337,8 @@ export const HomePageProducts: Product[] = [
   {
     id: 4,
     name: "Granite dining table with dining chair",
-    price: 40000,
-    originalPrice: 38000,
+    price: 400,
+    originalPrice: 420,
     rating: 4,
     image: "/Images/maskgroup12.png",
     description: "A luxurious granite dining table paired with comfortable dining chairs. Perfect for any formal dining setting, with a sleek and durable design.",

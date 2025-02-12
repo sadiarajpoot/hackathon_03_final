@@ -10,6 +10,7 @@ import { toast } from "react-toastify";
 import AddToCardTosity from "@/app/components/AddToCardTosity";
 import { client } from "@/sanity/lib/client";
 
+
 const fetchProductById = async (id: string) => {
   const query = `*[_type == "product" && _id == $id] {
     _id,
@@ -144,8 +145,8 @@ const ProductPage = ({ params }: ProductPageProps) => {
             <Image
               src={product?.image?.asset?.url || "/default-image.jpg"}
               alt={product?.name || "Product Image"}
-              width={900}
-              height={900}
+              width={300}
+              height={300}
               className="w-full h-auto object-cover"
             />
           </div>
@@ -157,6 +158,7 @@ const ProductPage = ({ params }: ProductPageProps) => {
           <h3 className="text-xl font-semibold text-gray-800">{product?.category}</h3>
           <p className="text-sm text-gray-500 mt-4 pr-6 Poppins">{product?.description}</p>
           <ProductCustomization />
+           
           <div className="mt-6">
             <h3 className="text-xl font-semibold text-gray-800">Customer Reviews</h3>
             <div className="flex items-center mt-2">
@@ -174,15 +176,16 @@ const ProductPage = ({ params }: ProductPageProps) => {
             <button onClick={addToCart} className="bg-black text-white px-6 py-2 Poppins rounded hover:bg-gray-800">
               Add To Cart
             </button>
-            <button
-    
-      className="bg-green-500 text-white px-6 py-2 Poppins rounded hover:bg-green-600 h-10  "
-    >
-   <a href="/checkout">Buy Now</a>
-    </button>
+            {/* <button className="bg-green-500 text-white w-full sm:w-auto px-6 py-2 sm:py-3 Poppins rounded hover:bg-green-600 h-10 flex justify-center items-center text-sm sm:text-base">
+  <a href="/checkout">Buy Now</a>
+</button> */}
+
             <AddToCardTosity />
             
           </div>
+          <button className="bg-green-500 text-white w-full sm:w-auto px-6 py-2 sm:py-3 Poppins rounded hover:bg-green-600 h-10 flex justify-center items-center text-sm sm:text-base">
+  <a href="/checkout">Buy Now</a>
+</button>
         </div>
       </div>
 

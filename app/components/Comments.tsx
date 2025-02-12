@@ -29,7 +29,7 @@ const Comments = () => {
   }
 
   return (
-    <div className="max-w-2xl mx-auto p-4">
+    <div className="max-w-2xl">
       {/* Comment Form */}
       <form
         className="flex flex-col sm:flex-row items-center gap-4 md:mt-8 mt-6 p-5 border-2 border-gray-300 rounded-lg shadow-xl hover:shadow-2xl transition-shadow duration-300 ease-in-out"

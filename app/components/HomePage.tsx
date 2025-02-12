@@ -11,11 +11,12 @@ import Group35 from "../../public/Images/Group 35.png"
 import Group43 from "../../public/Images/Group 43.png"
 import Link from 'next/link'
 import HomeHeader from './HomeHeader';
-import { HomePageProducts} from '@/data/data';
+import { HomePageProducts } from '@/data/data';
 import HeroImage from "../../public/Images/Rocket single seater 1.png"
 import AddToCardTosity from './AddToCardTosity';
 import FeedBack from './FeedBack';
 import SocialMediaSharing from './SocialMediaSharing';
+import { FaCartPlus } from 'react-icons/fa';
 
 
 const HomePage = () => {
@@ -72,47 +73,36 @@ const HomePage = () => {
         </p>
 
         {/* Product Grid */}
-        <div className="flex flex-wrap justify-center gap-8 px-4">
-  {/* Product Card */}
-  {HomePageProducts.map((product) => (
-    <div
-      key={product.id}
-      className="w-full sm:w-[90%] md:w-[230px] mx-4 h-auto flex flex-col items-center p-2 border border-gray-300 rounded-lg shadow-md"
-    >
-      
-      <Link href={`/product/${product.id}`}>
-      <img src={product.image} alt={product.name} className="mb-2 w-full h-auto" />
-      <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-center mb-1">
-        {product.name}
-      </h3>
-      <div className="flex items-center justify-center mb-1">
-        <span className="Poppins text-[14px] text-gray-500 line-through mr-1">
-          Rs. {product.originalPrice.toLocaleString()}
-        </span>
-        <span className="Poppins text-[18px] text-black font-medium">
-          Rs. {product.price.toLocaleString()}
-        </span>
-      </div>
-      <div className="flex items-center justify-center mb-2">
-        <span className="text-yellow-500">{'★'.repeat(product.rating)}</span>
-        <span className="ml-2 text-gray-500">{product.rating} / 5</span>
-      </div>
-      <div className="flex gap-1 mb-2">
-        <button className="bg-slate-500 text-white px-4 py-1 rounded text-[14px] hover:bg-slate-600 transition hover:scale-105">
-          Add to Cart
-          <AddToCardTosity/>
-        </button>
+        <div className="flex flex-wrap justify-center px-4 gap-6">
+          {/* Product Card */}
+          {HomePageProducts.map((product) => (
+            <div
+              key={product.id}
+              className="w-full sm:w-[90%] md:w-[230px] mx-4 h-auto flex flex-col items-center p-2 border border-gray-300 rounded-lg shadow-md"
+            >
 
-        <button className="bg-green-500 text-white px-4 py-1 rounded text-[14px] hover:bg-green-600 transition hover:scale-105">
-          Buy Now
-        </button>
-      </div>
-      </Link>
-    </div>
-  ))}
-</div>
-
-
+              <Link href={`/product/${product.id}`}>
+                <img src={product.image} alt={product.name} className="mb-2 w-full h-auto" />
+                <h3 className="Poppins font-medium text-[16px] leading-[24px] text-black text-start mb-1">
+                  {product.name}
+                </h3>
+                <div className="flex items-start justify-start ">
+                  <span className="text-yellow-500">{'★'.repeat(product.rating)}</span>
+                  <span className="ml-2 text-gray-500">{product.rating} /5</span>
+                </div>
+                <div className="flex items-start justify-start ">
+                  <span className="Poppins text-[18px] text-black font-medium">
+                    <span className='text-green-600'>$</span>{product.price.toLocaleString()}
+                  </span>
+                  <button className="flex-1 text-slate-600 rounded transition hover:scale-105 flex items-end justify-end">
+                    <FaCartPlus size={25} className="mr-2" />
+                    <AddToCardTosity />
+                  </button>
+                </div>
+              </Link>
+            </div>
+          ))}
+        </div>
         <h3 className=" Poppins font-medium text-[16px] mb-2 mt-12 text-center sm:text-[20px] leading-[30px] text-black">
           View More
         </h3>
@@ -297,7 +287,7 @@ const HomePage = () => {
                 <li>Payment Options</li>
                 <li>Returns</li>
                 <li>Privacy Policies</li>
-                <li><FeedBack/></li>
+                <li><FeedBack /></li>
               </ul>
             </div>
           </div>
@@ -316,8 +306,8 @@ const HomePage = () => {
             <button className=" py-2 text-black font-medium m-2 transition  border-b border-black">
               Subscribe
             </button>
-            <SocialMediaSharing/>
-           
+            <SocialMediaSharing />
+
           </div>
         </div>
 
@@ -328,7 +318,7 @@ const HomePage = () => {
           </p>
         </div>
       </div>
-  
+
     </>
   )
 }

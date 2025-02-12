@@ -6,6 +6,8 @@ import ProductCustomization from '@/app/components/Customization';
 import { HomePageProducts } from '@/data/data';
 import { useState, useEffect } from 'react';
 import { BsCart3 } from 'react-icons/bs';
+import AddToCardTosity from "@/app/components/AddToCardTosity";
+import { toast } from "react-toastify";
 
 
 
@@ -87,6 +89,15 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
 
       setCart([...cart, { ...product, quantity: productQuantity }]);
     }
+    toast.success(`${product?.name} added to cart!`, {
+      position: "top-right",
+      autoClose: 3000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "light",
+    });
   };
 
   const handleQuantityChange = (action: 'increase' | 'decrease') => {
@@ -99,6 +110,7 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
 
   const removeFromCart = (productId: number) => {
     setCart(cart.filter(item => item.id !== productId));
+  
   };
 
   const renderStars = (rating: number) => {
@@ -123,23 +135,23 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="flex flex-col md:flex-row items-center justify-center gap-8">
+      <div className="flex flex-col md:flex-row items-center justify-center gap-3">
         {/* Image Section */}
         <div className="w-full md:w-1/2">
           <img src={product.image} alt={product.name} className="w-full h-auto object-contain" />
         </div>
 
         {/* Details Section */}
-        <div className="w-full md:w-1/2 text-center md:text-left">
+        <div className="w-full md:w-1/2 text-start md:text-left">
           <h1 className="text-3xl font-bold mb-4 Poppins">{product.name}</h1>
           <p className="text-sm text-gray-700 mb-4 Poppins">{product.description}</p>
-          <div className="flex items-center justify-center gap-4 mb-4">
+          <p className="text-xl font-semibold mb-4 Poppins">Price:<span className='text-green-600'>$</span>{product.price}</p>
+          <p className="text-md text-gray-500 line-through mb-4 Poppins"><span className='text-green-600'>$</span>{product.originalPrice}</p>
+          <div className="flex items-start justify-start">
             {renderStars(product.rating)} {/* Show rating stars */}
           </div>
-          <p className="text-xl font-semibold mb-4 Poppins">Price: Rs. {product.price}</p>
-          <p className="text-md text-gray-500 line-through mb-4 Poppins"> Rs. {product.originalPrice}</p>
           <ProductCustomization/>
-          <div className="flex gap-4 mt-4">
+          <div className="flex gap-4 mt-4 ">
             {/* Quantity Control */}
             <div className="flex items-center space-x-4 mt-4">
               <div className="flex items-center border border-gray-300 rounded">
@@ -160,14 +172,14 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
             
               <button
                 onClick={() => addToCart(product)}
-                className="bg-black text-white px-6 py-2 Poppins rounded hover:bg-gray-800"
+                className="bg-black text-white px-6 py-2 Poppins rounded hover:bg-gray-800 "
               >
                 Add To Cart
+          
               </button>
+              <AddToCardTosity />
               <button
-    
-      className="bg-green-500 text-white px-6 py-2 Poppins rounded hover:bg-green-600 h-10  "
-    >
+      className="bg-green-500 text-white px-6 py-2 Poppins rounded hover:bg-green-600 h-10 ">
    <a href="/checkout">Buy Now</a>
     </button>
             </div>
@@ -175,7 +187,6 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
           </div>
         </div>
       </div>
-
 
       <div
         className="fixed bottom-8 right-8 bg-slate-500 text-white p-4 rounded-full cursor-pointer "
@@ -236,7 +247,7 @@ const ProductDetails = ({ params }: { params: { id: string } }) => {
       )}
 
       {/* Reviews Section */}
-      <div className="mt-8">
+      <div className="mt-24">
         <h2 className="text-2xl font-semibold mb-4 Poppins">Reviews:</h2>
         <div className="space-y-4">
           {reviews.length > 0 ? (
